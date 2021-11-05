@@ -46,11 +46,11 @@ async function contactExists(apiKey, email) {
       },
     });
 
-    const { contact } = response.data;
+    const { contacts } = response.data;
 
-    console.log("LINE 51 CONTACT: ", contact);
+    console.log("LINE 51 CONTACT: ", contacts[0]);
     console.log("RESPONSE: ", response.data);
-    return contact;
+    return contacts[0];
   } catch (error) {
     if (error.response) {
       throw error.response.data;
