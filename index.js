@@ -7,10 +7,13 @@ app.use(express.json());
 
 app.post("/", async (req, res) => {
   const { apiKey } = req.query;
-  const { contact_id, city } = req.body;
+  const {
+    location: { city },
+    email,
+  } = req.body;
 
   try {
-    const contact = await contactExists(apiKey, contact_id);
+    const contact = await contactExists(apiKey, email);
     if (contact) {
       try {
         const contactWithTag = await addTag(
@@ -32,10 +35,10 @@ app.post("/", async (req, res) => {
   }
 });
 
-async function contactExists(apiKey, contactId) {
+async function contactExists(apiKey, email) {
   try {
     const response = await axios({
-      url: `https://rest.gohighlevel.com/v1/contacts/${contactId}`,
+      url: `https://rest.gohighlevel.com/v1/contacts?query=${email}`,
       method: "GET",
       headers: {
         "Content-Type": "application/json",
