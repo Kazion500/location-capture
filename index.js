@@ -24,13 +24,13 @@ app.post("/", async (req, res) => {
         );
         return res.json(contactWithTag);
       } catch (error) {
-        console.log(error.message);
+        console.log("LINE 27 ERROR",error.message);
         return res.json(error);
       }
     }
     return res.json(contact);
   } catch (error) {
-    console.log(error.message);
+    console.log("LINE 27 ERROR",error.message);
     return res.json({ res: "hello" });
   }
 });
@@ -48,7 +48,7 @@ async function contactExists(apiKey, email) {
 
     const { contact } = response.data;
 
-    console.log("CONTACT: ", contact);
+    console.log("LINE 51 CONTACT: ", contact);
     console.log("RESPONSE: ", response.data);
     return contact;
   } catch (error) {
@@ -75,7 +75,7 @@ async function addTag(apiKey, city, tags, contactId) {
 
     const { contact } = response.data;
 
-    console.log("CONTACT: ", contact);
+    console.log("LINE 78 CONTACT: ", contact);
     console.log("RESPONSE: ", response.data);
     return contact;
   } catch (error) {
