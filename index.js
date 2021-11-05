@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
-app.post("/", (req, res) => {
+app.post("/", async (req, res) => {
   const { apiKey } = req.query;
   const { contact_id, city } = req.body;
 
